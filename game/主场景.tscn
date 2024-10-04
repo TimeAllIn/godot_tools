@@ -1,0 +1,444 @@
+[gd_scene load_steps=10 format=3 uid="uid://cq5xcp72hhmdj"]
+
+[ext_resource type="Script" path="res://脚本/移动.gd" id="1_rhq6o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5hwj"]
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3wok"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ajt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuxqj"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yk7ht"]
+bg_color = Color(1, 0.9375, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0egu"]
+bg_color = Color(0.10625, 0, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7p42"]
+bg_color = Color(0.206849, 0.277338, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpxjn"]
+bg_color = Color(1, 0.7125, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+
+[node name="主场景" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o5hwj")
+
+[node name="页面合集" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="指令" type="Panel" parent="页面合集"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+
+[node name="数据" type="Panel" parent="页面合集"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+
+[node name="首页" type="Panel" parent="页面合集"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+
+[node name="历史" type="Panel" parent="页面合集"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+
+[node name="我的" type="Panel" parent="页面合集"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+
+[node name="移动" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.0625
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_34ajt")
+script = ExtResource("1_rhq6o")
+metadata/_edit_use_anchors_ = true
+
+[node name="退出" type="Panel" parent="移动"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.958333
+anchor_top = 0.2
+anchor_right = 0.983333
+anchor_bottom = 0.8
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nuxqj")
+metadata/_edit_use_anchors_ = true
+
+[node name="退出" type="Button" parent="移动/退出"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 0
+flat = true
+
+[node name="最小化" type="Panel" parent="移动"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.925
+anchor_top = 0.2
+anchor_right = 0.95
+anchor_bottom = 0.8
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_yk7ht")
+metadata/_edit_use_anchors_ = true
+
+[node name="最小化" type="Button" parent="移动/最小化"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 0
+text = "
+"
+flat = true
+
+[node name="置顶" type="Panel" parent="移动"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.891667
+anchor_top = 0.2
+anchor_right = 0.916667
+anchor_bottom = 0.8
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_t0egu")
+metadata/_edit_use_anchors_ = true
+
+[node name="置顶" type="Button" parent="移动/置顶"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 0
+text = "
+"
+flat = true
+
+[node name="菜单" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.291667
+anchor_top = 0.85
+anchor_right = 0.708333
+anchor_bottom = 0.975
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7p42")
+metadata/_edit_use_anchors_ = true
+
+[node name="容器" type="HBoxContainer" parent="菜单"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="指令生成" type="Panel" parent="菜单/容器"]
+custom_minimum_size = Vector2(85, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
+metadata/_edit_use_anchors_ = true
+
+[node name="文本" type="Label" parent="菜单/容器/指令生成"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "指令"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/指令生成"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="按钮" type="Button" parent="菜单/容器/指令生成"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="数据库" type="Panel" parent="菜单/容器"]
+custom_minimum_size = Vector2(85, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
+metadata/_edit_use_anchors_ = true
+
+[node name="文本" type="Label" parent="菜单/容器/数据库"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "数据"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/数据库"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="按钮" type="Button" parent="菜单/容器/数据库"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="首页" type="Panel" parent="菜单/容器"]
+custom_minimum_size = Vector2(85, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
+metadata/_edit_use_anchors_ = true
+
+[node name="文本" type="Label" parent="菜单/容器/首页"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "首页"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/首页"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="按钮" type="Button" parent="菜单/容器/首页"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="历史" type="Panel" parent="菜单/容器"]
+custom_minimum_size = Vector2(85, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
+metadata/_edit_use_anchors_ = true
+
+[node name="文本" type="Label" parent="菜单/容器/历史"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "历史"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/历史"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="按钮" type="Button" parent="菜单/容器/历史"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="我的" type="Panel" parent="菜单/容器"]
+custom_minimum_size = Vector2(85, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
+metadata/_edit_use_anchors_ = true
+
+[node name="文本" type="Label" parent="菜单/容器/我的"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "我"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/我的"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="按钮" type="Button" parent="菜单/容器/我的"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="gui_input" from="移动" to="移动" method="_on_gui_input"]
+[connection signal="pressed" from="移动/退出/退出" to="移动" method="_on_退出_pressed"]
+[connection signal="pressed" from="移动/最小化/最小化" to="移动" method="_on_最小化_pressed"]
+[connection signal="pressed" from="移动/置顶/置顶" to="移动" method="_on_置顶_pressed"]
