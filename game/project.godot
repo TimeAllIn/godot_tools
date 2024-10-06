@@ -10,10 +10,13 @@ config_version=5
 
 [application]
 
-config/name="我决定修仙"
+config/name="工具"
 run/main_scene="res://主场景.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 0)
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [display]

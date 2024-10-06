@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq5xcp72hhmdj"]
+[gd_scene load_steps=13 format=3 uid="uid://cq5xcp72hhmdj"]
 
 [ext_resource type="Script" path="res://脚本/移动.gd" id="1_rhq6o"]
 
@@ -17,6 +17,24 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pony"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3p18"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_knsyd"]
+number_color = Color(0.7, 0.65625, 0, 1)
+symbol_color = Color(1, 0, 0, 1)
+function_color = Color(0.85625, 0, 1, 1)
+member_variable_color = Color(0, 0.925, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ajt"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -86,7 +104,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="指令" type="Panel" parent="页面合集"]
+[node name="记事本" type="Panel" parent="页面合集"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,6 +112,70 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+
+[node name="列表" type="Panel" parent="页面合集/记事本"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0333333
+anchor_top = 0.075
+anchor_right = 0.366667
+anchor_bottom = 0.825
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
+metadata/_edit_use_anchors_ = true
+
+[node name="容器滚动" type="ScrollContainer" parent="页面合集/记事本/列表"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.0333333
+anchor_right = 0.95
+anchor_bottom = 0.966667
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="容器" type="VBoxContainer" parent="页面合集/记事本/列表/容器滚动"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="内容" type="Panel" parent="页面合集/记事本"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.376667
+anchor_top = 0.075
+anchor_right = 0.966667
+anchor_bottom = 0.825
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
+metadata/_edit_use_anchors_ = true
+
+[node name="编辑" type="CodeEdit" parent="页面合集/记事本/内容"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0141243
+anchor_top = 0.0166667
+anchor_right = 0.985876
+anchor_bottom = 0.983333
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_color = Color(1, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l3p18")
+theme_override_colors/line_number_color = Color(0, 0, 0, 1)
+context_menu_enabled = false
+scroll_smooth = true
+syntax_highlighter = SubResource("CodeHighlighter_knsyd")
+highlight_all_occurrences = true
+gutters_draw_line_numbers = true
+metadata/_edit_use_anchors_ = true
 
 [node name="数据" type="Panel" parent="页面合集"]
 visible = false
@@ -228,6 +310,7 @@ anchor_left = 0.291667
 anchor_top = 0.85
 anchor_right = 0.708333
 anchor_bottom = 0.975
+offset_right = 0.000793457
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_f7p42")
@@ -243,14 +326,14 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="指令生成" type="Panel" parent="菜单/容器"]
+[node name="记事本" type="Panel" parent="菜单/容器"]
 custom_minimum_size = Vector2(85, 80)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
 metadata/_edit_use_anchors_ = true
 
-[node name="文本" type="Label" parent="菜单/容器/指令生成"]
+[node name="文本" type="Label" parent="菜单/容器/记事本"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -259,12 +342,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "指令"
+text = "记事本
+"
 horizontal_alignment = 1
 vertical_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/指令生成"]
+[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/记事本"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -272,7 +356,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="按钮" type="Button" parent="菜单/容器/指令生成"]
+[node name="按钮" type="Button" parent="菜单/容器/记事本"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
