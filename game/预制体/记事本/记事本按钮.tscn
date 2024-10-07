@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2iqlfgdvet7d"]
+
+[ext_resource type="Script" path="res://脚本/记事本/记事本按钮.gd" id="1_o55ao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pony"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+shadow_size = 2
+
+[node name="按钮" type="Panel"]
+custom_minimum_size = Vector2(0, 60)
+anchors_preset = -1
+anchor_right = 0.0416667
+anchor_bottom = 0.0625
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
+script = ExtResource("1_o55ao")
+metadata/_edit_use_anchors_ = true
+
+[node name="文本" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="按钮文件" type="Button" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="pressed" from="按钮文件" to="." method="_on_按钮文件_pressed"]

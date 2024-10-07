@@ -1,6 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq5xcp72hhmdj"]
+[gd_scene load_steps=20 format=3 uid="uid://cq5xcp72hhmdj"]
 
 [ext_resource type="Script" path="res://脚本/移动.gd" id="1_rhq6o"]
+[ext_resource type="Script" path="res://脚本/全局/全局脚本归纳.gd" id="1_w6vvt"]
+[ext_resource type="Script" path="res://脚本/记事本/创建文本.gd" id="2_n8mba"]
+[ext_resource type="PackedScene" uid="uid://co3m0crblj862" path="res://预制体/按钮设置.tscn" id="3_a432t"]
+[ext_resource type="Script" path="res://脚本/记事本/记事本编辑.gd" id="3_pqmbk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5hwj"]
 bg_color = Color(1, 1, 1, 0)
@@ -10,8 +14,14 @@ corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3wok"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gffr"]
 bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -36,11 +46,6 @@ symbol_color = Color(1, 0, 0, 1)
 function_color = Color(0.85625, 0, 1, 1)
 member_variable_color = Color(0, 0.925, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ajt"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuxqj"]
 bg_color = Color(1, 0, 0, 1)
 corner_radius_top_left = 25
@@ -50,6 +55,67 @@ corner_radius_bottom_left = 25
 corner_detail = 20
 shadow_size = 1
 shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b4o8"]
+bg_color = Color(0.7625, 0.583789, 0.583789, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f1xs"]
+bg_color = Color(0.034375, 1, 0.167148, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8s4m"]
+bg_color = Color(0.0644535, 0, 0.9375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7o5ou"]
+bg_color = Color(0.271875, 0.271875, 0.271875, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ajt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yk7ht"]
 bg_color = Color(1, 0.9375, 0, 1)
@@ -80,14 +146,6 @@ corner_radius_bottom_left = 50
 corner_detail = 20
 shadow_size = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpxjn"]
-bg_color = Color(1, 0.7125, 0, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 20
-
 [node name="主场景" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,6 +153,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o5hwj")
+script = ExtResource("1_w6vvt")
 
 [node name="页面合集" type="Control" parent="."]
 layout_mode = 1
@@ -104,19 +163,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="记事本" type="Panel" parent="页面合集"]
+[node name="记事本" type="Panel" parent="页面合集" groups=["screen"]]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0gffr")
 
 [node name="列表" type="Panel" parent="页面合集/记事本"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0333333
+anchor_left = 0.0833333
 anchor_top = 0.075
 anchor_right = 0.366667
 anchor_bottom = 0.825
@@ -126,6 +185,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
 metadata/_edit_use_anchors_ = true
 
 [node name="容器滚动" type="ScrollContainer" parent="页面合集/记事本/列表"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -142,6 +202,7 @@ metadata/_edit_use_anchors_ = true
 [node name="容器" type="VBoxContainer" parent="页面合集/记事本/列表/容器滚动"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 10
 
 [node name="内容" type="Panel" parent="页面合集/记事本"]
 layout_mode = 1
@@ -164,50 +225,209 @@ anchor_right = 0.985876
 anchor_bottom = 0.983333
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_placeholder_color = Color(1, 0.5625, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/selection_color = Color(0, 0, 0, 1)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 theme_override_colors/caret_color = Color(1, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_l3p18")
 theme_override_colors/line_number_color = Color(0, 0, 0, 1)
+placeholder_text = "使用说明：
+1.列表布局：
+	左侧为工具栏目，中间文件栏目，右侧为内容栏目
+2.工具栏目说明：
+	目前的工具有：创建文件，删除文件
+
+"
 context_menu_enabled = false
 scroll_smooth = true
 syntax_highlighter = SubResource("CodeHighlighter_knsyd")
 highlight_all_occurrences = true
 gutters_draw_line_numbers = true
+script = ExtResource("3_pqmbk")
 metadata/_edit_use_anchors_ = true
 
-[node name="数据" type="Panel" parent="页面合集"]
-visible = false
+[node name="按钮列表" type="Panel" parent="页面合集/记事本"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.0333333
+anchor_top = 0.075
+anchor_right = 0.075
+anchor_bottom = 0.825
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
+metadata/_edit_use_anchors_ = true
 
-[node name="首页" type="Panel" parent="页面合集"]
-visible = false
+[node name="滚动条" type="ScrollContainer" parent="页面合集/记事本/按钮列表"]
+clip_contents = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.0333333
+anchor_right = 0.799999
+anchor_bottom = 0.966667
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+follow_focus = true
+metadata/_edit_use_anchors_ = true
 
-[node name="历史" type="Panel" parent="页面合集"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+[node name="容器" type="VBoxContainer" parent="页面合集/记事本/按钮列表/滚动条"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="我的" type="Panel" parent="页面合集"]
+[node name="创建文本" type="Panel" parent="页面合集/记事本/按钮列表/滚动条/容器"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
+metadata/_edit_use_anchors_ = true
+
+[node name="按钮" type="Button" parent="页面合集/记事本/按钮列表/滚动条/容器/创建文本"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="删除文本" type="Panel" parent="页面合集/记事本/按钮列表/滚动条/容器"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
+metadata/_edit_use_anchors_ = true
+
+[node name="按钮" type="Button" parent="页面合集/记事本/按钮列表/滚动条/容器/删除文本"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="创建文本" type="Panel" parent="页面合集/记事本"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.283333
+anchor_top = 0.25
+anchor_right = 0.7
+anchor_bottom = 0.625
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
+script = ExtResource("2_n8mba")
+metadata/_edit_use_anchors_ = true
+
+[node name="文本" type="Label" parent="页面合集/记事本/创建文本"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.0333333
+anchor_right = 0.6
+anchor_bottom = 0.146667
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "名称"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="名字" type="Panel" parent="页面合集/记事本/创建文本"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.166667
+anchor_right = 0.96
+anchor_bottom = 0.466667
+offset_bottom = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
+metadata/_edit_use_anchors_ = true
+
+[node name="输入框" type="LineEdit" parent="页面合集/记事本/创建文本/名字"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+alignment = 1
+flat = true
+
+[node name="创建" type="Panel" parent="页面合集/记事本/创建文本"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26
+anchor_top = 0.6
+anchor_right = 0.76
+anchor_bottom = 0.9
+offset_bottom = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pony")
+metadata/_edit_use_anchors_ = true
+
+[node name="字体" type="Label" parent="页面合集/记事本/创建文本/创建"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "创建"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="按钮" type="Button" parent="页面合集/记事本/创建文本/创建"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="退出" type="Panel" parent="页面合集/记事本/创建文本"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_top = 0.0333333
+anchor_right = 0.944
+anchor_bottom = 0.1
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nuxqj")
+metadata/_edit_use_anchors_ = true
+
+[node name="按钮" type="Button" parent="页面合集/记事本/创建文本/退出"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="数据" type="Panel" parent="页面合集" groups=["screen"]]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -215,7 +435,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t3wok")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0b4o8")
+
+[node name="首页" type="Panel" parent="页面合集" groups=["screen"]]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4f1xs")
+
+[node name="历史" type="Panel" parent="页面合集" groups=["screen"]]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b8s4m")
+
+[node name="我的" type="Panel" parent="页面合集" groups=["screen"]]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7o5ou")
 
 [node name="移动" type="Panel" parent="."]
 layout_mode = 1
@@ -318,210 +568,46 @@ metadata/_edit_use_anchors_ = true
 
 [node name="容器" type="HBoxContainer" parent="菜单"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.1
+anchor_right = 0.98
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="记事本" type="Panel" parent="菜单/容器"]
-custom_minimum_size = Vector2(85, 80)
+[node name="记事本" parent="菜单/容器" instance=ExtResource("3_a432t")]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
-metadata/_edit_use_anchors_ = true
 
-[node name="文本" type="Label" parent="菜单/容器/记事本"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "记事本
-"
-horizontal_alignment = 1
-vertical_alignment = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/记事本"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="按钮" type="Button" parent="菜单/容器/记事本"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="数据库" type="Panel" parent="菜单/容器"]
-custom_minimum_size = Vector2(85, 80)
+[node name="数据" parent="菜单/容器" instance=ExtResource("3_a432t")]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
-metadata/_edit_use_anchors_ = true
+id = 1
 
-[node name="文本" type="Label" parent="菜单/容器/数据库"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "数据"
-horizontal_alignment = 1
-vertical_alignment = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/数据库"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="按钮" type="Button" parent="菜单/容器/数据库"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="首页" type="Panel" parent="菜单/容器"]
-custom_minimum_size = Vector2(85, 80)
+[node name="首页" parent="菜单/容器" instance=ExtResource("3_a432t")]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
-metadata/_edit_use_anchors_ = true
+id = 2
 
-[node name="文本" type="Label" parent="菜单/容器/首页"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "首页"
-horizontal_alignment = 1
-vertical_alignment = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/首页"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="按钮" type="Button" parent="菜单/容器/首页"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="历史" type="Panel" parent="菜单/容器"]
-custom_minimum_size = Vector2(85, 80)
+[node name="历史" parent="菜单/容器" instance=ExtResource("3_a432t")]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
-metadata/_edit_use_anchors_ = true
+id = 3
 
-[node name="文本" type="Label" parent="菜单/容器/历史"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "历史"
-horizontal_alignment = 1
-vertical_alignment = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/历史"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="按钮" type="Button" parent="菜单/容器/历史"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="我的" type="Panel" parent="菜单/容器"]
-custom_minimum_size = Vector2(85, 80)
+[node name="我" parent="菜单/容器" instance=ExtResource("3_a432t")]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_dpxjn")
-metadata/_edit_use_anchors_ = true
+id = 4
 
-[node name="文本" type="Label" parent="菜单/容器/我的"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "我"
-horizontal_alignment = 1
-vertical_alignment = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="纹理" type="AspectRatioContainer" parent="菜单/容器/我的"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="按钮" type="Button" parent="菜单/容器/我的"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
+[connection signal="visibility_changed" from="页面合集/记事本" to="页面合集/记事本/创建文本" method="_on_记事本_visibility_changed"]
+[connection signal="text_changed" from="页面合集/记事本/内容/编辑" to="页面合集/记事本/内容/编辑" method="_on_text_changed"]
+[connection signal="pressed" from="页面合集/记事本/按钮列表/滚动条/容器/创建文本/按钮" to="页面合集/记事本/创建文本" method="_on_创建_pressed"]
+[connection signal="pressed" from="页面合集/记事本/创建文本/创建/按钮" to="页面合集/记事本/创建文本" method="_on_创建文本按钮_pressed"]
+[connection signal="pressed" from="页面合集/记事本/创建文本/退出/按钮" to="页面合集/记事本/创建文本" method="_on_退出按钮_pressed"]
 [connection signal="gui_input" from="移动" to="移动" method="_on_gui_input"]
 [connection signal="pressed" from="移动/退出/退出" to="移动" method="_on_退出_pressed"]
 [connection signal="pressed" from="移动/最小化/最小化" to="移动" method="_on_最小化_pressed"]
